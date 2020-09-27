@@ -26,5 +26,6 @@ app.get("/", (req: Request, res: Response) => {
 
 app.get("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
+
   res.send(data.filter((item) => item.id == parseInt(id, 10)));
 });
