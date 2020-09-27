@@ -451,24 +451,29 @@
         "signature": "cfb831aef452fa57d4e42b870ccc3c4a8354e9135aa56345092239db6927a6f4",
         "affectsGlobalScope": false
       },
+      "../src/app/post/post.service.ts": {
+        "version": "22a55cb53f8486015df45360b33e5a3955d7d0cc199fe7aead07dc453576f4a2",
+        "signature": "bc1fc70a1cceed05502a04e51ef5322f953a0f2370ed541d26d530bfc57b77bf",
+        "affectsGlobalScope": false
+      },
       "../src/app/post/post.controller.ts": {
-        "version": "a09bb69c62b724acbbae0c89fbf4d1e301040c095c8cfd89816442c9510e5eac",
+        "version": "f19639bc9c25e8a784e089b4b093b9b9c08ec9d2bd768a94bae64f0f7f28301d",
         "signature": "4228c0d20175edf83497c99f67a8d98550c2c6bb33c9826fd9d444683504426d",
         "affectsGlobalScope": false
       },
+      "../src/app/app.middleware.ts": {
+        "version": "1acae0f7277c184fb73937c2011e1837b97b0ac7c5e6d8aaece39d99de6ada1e",
+        "signature": "c35087402679d48a7ec860ffdcdb8df01e6a643bd1513230dcbe17a62e8496b4",
+        "affectsGlobalScope": false
+      },
       "../src/app/post/post.router.ts": {
-        "version": "34b8b6a977056d3bc200e69bae1eb746b1914875e061c9d4b22eda4ad00287fc",
+        "version": "f3d9ef5082c246f8b3971cf7bca872962622ece34978257e65e2ea68e2ec371d",
         "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "a17dfc694981b932626dc6ddb50c5024b16447219d9679a64c96a700ce95ea96",
+        "version": "0a7fc0dda81f766aff3d710b69b10df897c9208817e9c69fe83516ab83f7dafb",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
-      "../src/app/post/post.service.ts": {
-        "version": "946f87e95129d2b89663a850d8f22dbadb7ea1f5329d8987217be8e0051aafae",
-        "signature": "2b935dd34bd2c0812d6e62a524ce9a118cbeae446ff48e20fb79ab2d26fe1aa0",
         "affectsGlobalScope": false
       }
     },
@@ -687,18 +692,24 @@
       "../src/app/app.config.ts": [
         "../node_modules/dotenv/types/index.d.ts"
       ],
+      "../src/app/app.middleware.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
       "../src/app/index.ts": [
         "../node_modules/@types/express/index.d.ts"
       ],
       "../src/app/post/post.controller.ts": [
-        "../node_modules/@types/express/index.d.ts"
+        "../node_modules/@types/express/index.d.ts",
+        "../src/app/post/post.service.ts"
       ],
       "../src/app/post/post.router.ts": [
         "../node_modules/@types/express/index.d.ts",
+        "../src/app/app.middleware.ts",
         "../src/app/post/post.controller.ts"
       ],
       "../src/main.ts": [
         "../src/app/app.config.ts",
+        "../src/app/app.middleware.ts",
         "../src/app/index.ts",
         "../src/app/post/post.router.ts"
       ]
@@ -899,6 +910,9 @@
       "../node_modules/dotenv/types/index.d.ts": [
         "../node_modules/@types/node/index.d.ts"
       ],
+      "../src/app/app.middleware.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
       "../src/app/index.ts": [
         "../node_modules/@types/express-serve-static-core/index.d.ts"
       ],
@@ -999,6 +1013,7 @@
       "../node_modules/typescript/lib/lib.scripthost.d.ts",
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "../src/app/app.config.ts",
+      "../src/app/app.middleware.ts",
       "../src/app/index.ts",
       "../src/app/post/post.controller.ts",
       "../src/app/post/post.router.ts",

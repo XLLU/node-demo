@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from "express";
+import { getPosts } from "./post.service";
 
 export const index = (
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
-  response.write("hey, from controller~ ");
-  response.end();
+    console.log(request.headers);
+    if (request.headers.authorization != "SECRET") {
+      return next(new Error());
+    }
+    response.send(getPosts());
 };
