@@ -3,29 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const app = express_1.default();
-const port = 3000;
-const data = [
-    {
-        id: 1,
-        name: "lucas",
-        gender: "male",
-    },
-    {
-        id: 2,
-        name: "nancy",
-        gender: "female",
-    },
-];
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+const app_1 = __importDefault(require("./app"));
+const app_config_1 = require("./app/app.config");
+const post_router_1 = __importDefault(require("./app/post/post.router"));
+app_1.default.listen(app_config_1.APP_PORT, () => {
+    console.log(`App is listening on port:${app_config_1.APP_PORT}`);
 });
-app.get("/", (req, res) => {
-    res.send(data);
-});
-app.get("/:id", (req, res) => {
-    const { id } = req.params;
-    res.send(data.filter((item) => item.id == parseInt(id, 10)));
-});
+app_1.default.use(post_router_1.default);
 //# sourceMappingURL=main.js.map

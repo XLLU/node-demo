@@ -436,9 +436,39 @@
         "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
         "affectsGlobalScope": false
       },
+      "../src/app/index.ts": {
+        "version": "67ab09c03f8869084ad0ae11deb65ccc552ee49d096c9ad503017b18633a30f4",
+        "signature": "4654f92731de7c18eb496ebf4134d15c881a25c2d6579affd293cde1951e4ced",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/dotenv/types/index.d.ts": {
+        "version": "c9ae0b351a07b52f29a28e869d8c7c8d29743bbb5eeddc7c0b5b2a69a2450528",
+        "signature": "c9ae0b351a07b52f29a28e869d8c7c8d29743bbb5eeddc7c0b5b2a69a2450528",
+        "affectsGlobalScope": false
+      },
+      "../src/app/app.config.ts": {
+        "version": "026644c0555b8394b8a2fcc3acdcd2d05150a5ef89c591459d50a2a77c5db7be",
+        "signature": "cfb831aef452fa57d4e42b870ccc3c4a8354e9135aa56345092239db6927a6f4",
+        "affectsGlobalScope": false
+      },
+      "../src/app/post/post.controller.ts": {
+        "version": "a09bb69c62b724acbbae0c89fbf4d1e301040c095c8cfd89816442c9510e5eac",
+        "signature": "4228c0d20175edf83497c99f67a8d98550c2c6bb33c9826fd9d444683504426d",
+        "affectsGlobalScope": false
+      },
+      "../src/app/post/post.router.ts": {
+        "version": "34b8b6a977056d3bc200e69bae1eb746b1914875e061c9d4b22eda4ad00287fc",
+        "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
+        "affectsGlobalScope": false
+      },
       "../src/main.ts": {
-        "version": "699996de3d5ba83bd05d477efc09f5194ce04dc6b5edff19b07c47d80a273da2",
+        "version": "a17dfc694981b932626dc6ddb50c5024b16447219d9679a64c96a700ce95ea96",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "../src/app/post/post.service.ts": {
+        "version": "946f87e95129d2b89663a850d8f22dbadb7ea1f5329d8987217be8e0051aafae",
+        "signature": "2b935dd34bd2c0812d6e62a524ce9a118cbeae446ff48e20fb79ab2d26fe1aa0",
         "affectsGlobalScope": false
       }
     },
@@ -651,8 +681,26 @@
         "../node_modules/@types/express-serve-static-core/index.d.ts",
         "../node_modules/@types/mime/index.d.ts"
       ],
-      "../src/main.ts": [
+      "../node_modules/dotenv/types/index.d.ts": [
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../src/app/app.config.ts": [
+        "../node_modules/dotenv/types/index.d.ts"
+      ],
+      "../src/app/index.ts": [
         "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/app/post/post.controller.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/app/post/post.router.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../src/app/post/post.controller.ts"
+      ],
+      "../src/main.ts": [
+        "../src/app/app.config.ts",
+        "../src/app/index.ts",
+        "../src/app/post/post.router.ts"
       ]
     },
     "exportedModulesMap": {
@@ -847,6 +895,18 @@
       "../node_modules/@types/serve-static/index.d.ts": [
         "../node_modules/@types/express-serve-static-core/index.d.ts",
         "../node_modules/@types/mime/index.d.ts"
+      ],
+      "../node_modules/dotenv/types/index.d.ts": [
+        "../node_modules/@types/node/index.d.ts"
+      ],
+      "../src/app/index.ts": [
+        "../node_modules/@types/express-serve-static-core/index.d.ts"
+      ],
+      "../src/app/post/post.controller.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/app/post/post.router.ts": [
+        "../node_modules/@types/express-serve-static-core/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -905,6 +965,7 @@
       "../node_modules/@types/qs/index.d.ts",
       "../node_modules/@types/range-parser/index.d.ts",
       "../node_modules/@types/serve-static/index.d.ts",
+      "../node_modules/dotenv/types/index.d.ts",
       "../node_modules/typescript/lib/lib.dom.d.ts",
       "../node_modules/typescript/lib/lib.dom.iterable.d.ts",
       "../node_modules/typescript/lib/lib.es2015.collection.d.ts",
@@ -937,6 +998,11 @@
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../node_modules/typescript/lib/lib.scripthost.d.ts",
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "../src/app/app.config.ts",
+      "../src/app/index.ts",
+      "../src/app/post/post.controller.ts",
+      "../src/app/post/post.router.ts",
+      "../src/app/post/post.service.ts",
       "../src/main.ts"
     ]
   },
