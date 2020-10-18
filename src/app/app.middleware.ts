@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 
 export const printRequestUrl = (
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   console.log(request.url);
   next();
@@ -13,14 +13,14 @@ export const defaultErrorHandler = (
   error: any,
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   let statusCode: number, message: string;
 
   switch (message) {
     default:
       statusCode = 500;
-      message = "Internal Server Error. Contact the Dev. ";
+      message = 'Internal Server Error. Contact the Dev. ';
       break;
   }
 
