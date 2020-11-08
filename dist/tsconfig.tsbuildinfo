@@ -436,8 +436,28 @@
         "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
         "affectsGlobalScope": false
       },
+      "../src/app/post/post.service.ts": {
+        "version": "50e5a2ac99fecc5c4fe89a45796fb954e0e1b5fbd1dd355d718cb368734cfa33",
+        "signature": "2ca5c5bbab229c8b9657cacba07e0a95b8c14246f31662ae630f70340e386e93",
+        "affectsGlobalScope": false
+      },
+      "../src/app/post/post.controller.ts": {
+        "version": "16810b0201becdfc54a8e9018be813995fd8dbe78712df98ecbee9b18049ec0c",
+        "signature": "a689536de127623cbbc4bd65624988571b425d128a6b130040dc7149e379daec",
+        "affectsGlobalScope": false
+      },
+      "../src/app/app.middleware.ts": {
+        "version": "29b130ee7a12cbf5cbbdd9e3b543df8bcc52cc21d815523929063a8771cd8d8d",
+        "signature": "a79617d9c972f1c6cce9cf37695343c1becf57ee2339c3f1459d1282c01f6aa4",
+        "affectsGlobalScope": false
+      },
+      "../src/app/post/post.router.ts": {
+        "version": "7329cb31309af1eaa029b2292685016b10a3855f1d28eee6eff3723f757b9134",
+        "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
+        "affectsGlobalScope": false
+      },
       "../src/app/index.ts": {
-        "version": "67ab09c03f8869084ad0ae11deb65ccc552ee49d096c9ad503017b18633a30f4",
+        "version": "ff193f53c3e813de4c3e4919966447a380d67c672b75b184e6dc23a9ccf54bef",
         "signature": "4654f92731de7c18eb496ebf4134d15c881a25c2d6579affd293cde1951e4ced",
         "affectsGlobalScope": false
       },
@@ -447,32 +467,12 @@
         "affectsGlobalScope": false
       },
       "../src/app/app.config.ts": {
-        "version": "026644c0555b8394b8a2fcc3acdcd2d05150a5ef89c591459d50a2a77c5db7be",
+        "version": "4977a3490cccad119104b73a0e2f2b637255d1e7f348fbf1c316483dadf6de8b",
         "signature": "cfb831aef452fa57d4e42b870ccc3c4a8354e9135aa56345092239db6927a6f4",
         "affectsGlobalScope": false
       },
-      "../src/app/post/post.service.ts": {
-        "version": "22a55cb53f8486015df45360b33e5a3955d7d0cc199fe7aead07dc453576f4a2",
-        "signature": "bc1fc70a1cceed05502a04e51ef5322f953a0f2370ed541d26d530bfc57b77bf",
-        "affectsGlobalScope": false
-      },
-      "../src/app/post/post.controller.ts": {
-        "version": "f19639bc9c25e8a784e089b4b093b9b9c08ec9d2bd768a94bae64f0f7f28301d",
-        "signature": "4228c0d20175edf83497c99f67a8d98550c2c6bb33c9826fd9d444683504426d",
-        "affectsGlobalScope": false
-      },
-      "../src/app/app.middleware.ts": {
-        "version": "1acae0f7277c184fb73937c2011e1837b97b0ac7c5e6d8aaece39d99de6ada1e",
-        "signature": "c35087402679d48a7ec860ffdcdb8df01e6a643bd1513230dcbe17a62e8496b4",
-        "affectsGlobalScope": false
-      },
-      "../src/app/post/post.router.ts": {
-        "version": "f3d9ef5082c246f8b3971cf7bca872962622ece34978257e65e2ea68e2ec371d",
-        "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
-        "affectsGlobalScope": false
-      },
       "../src/main.ts": {
-        "version": "860b83416a1b338940b63c4579abcc6db9500ed10c6b08fb6966f6cd35e16b64",
+        "version": "dd294f0247426519b2ca60cf5b9254a2d744771b455123e554d947cc737c9e00",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       }
@@ -696,7 +696,9 @@
         "../node_modules/@types/express/index.d.ts"
       ],
       "../src/app/index.ts": [
-        "../node_modules/@types/express/index.d.ts"
+        "../node_modules/@types/express/index.d.ts",
+        "../src/app/app.middleware.ts",
+        "../src/app/post/post.router.ts"
       ],
       "../src/app/post/post.controller.ts": [
         "../node_modules/@types/express/index.d.ts",
@@ -709,9 +711,7 @@
       ],
       "../src/main.ts": [
         "../src/app/app.config.ts",
-        "../src/app/app.middleware.ts",
-        "../src/app/index.ts",
-        "../src/app/post/post.router.ts"
+        "../src/app/index.ts"
       ]
     },
     "exportedModulesMap": {
