@@ -27,6 +27,10 @@ export const defaultErrorHandler = (
       statusCode = 400;
       message = '密码必填哦';
       break;
+    case 'USER_NAME_EXISTS':
+      statusCode = 409;
+      message = '用户已经存在了~';
+      break;
     default:
       statusCode = 500;
       message = 'Something wrong with the server... ';

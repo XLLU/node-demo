@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcrypt';
+import { getUserByName } from './user.service';
 
-export const validateUserData = (
+export const validateUserData = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -13,6 +14,12 @@ export const validateUserData = (
 
   if (!password) {
     return next(new Error('PASSWORD_IS_REQUIRED'));
+  }
+
+  const user = await getUserByName(name);
+
+  if (user) {
+    return next(new Error('USER_NAME_EXISTS'));
   }
 
   next();

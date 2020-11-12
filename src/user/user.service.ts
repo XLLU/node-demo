@@ -11,3 +11,13 @@ export const createUser = async (user: UserModel) => {
 
   return data;
 };
+
+export const getUserByName = async (name: string) => {
+  const statement = `
+    SELECT * FROM user
+    WHERE name = ?
+  `;
+
+  const [data] = await connection.promise().query(statement, name);
+  return data;
+};

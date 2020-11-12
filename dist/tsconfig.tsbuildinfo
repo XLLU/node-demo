@@ -533,7 +533,7 @@
       },
       "../src/post/post.service.ts": {
         "version": "e277689f1451b484eca7aabe0265c8304fbca8a9195880c8be77edeb7819a222",
-        "signature": "d34d6202097fe844e62f3f587c34e958cbf34dde8a8dd44af86ba4b9b67b0210",
+        "signature": "9ff93f1e7b2987870cea2f2ee89eb11d3fc4a9559956825142abe80b91306a09",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/lodash/common/common.d.ts": {
@@ -607,7 +607,7 @@
         "affectsGlobalScope": false
       },
       "../src/app/app.middleware.ts": {
-        "version": "baa5a8a9ac5e54ddb96a7c126cc9c983ba60aa92e96d0f3b575a70592749f3df",
+        "version": "86b563f19c812b7c8babe6e9d6dea9379c2bc2a46da3fe86daf02b4a8df30e5a",
         "signature": "a79617d9c972f1c6cce9cf37695343c1becf57ee2339c3f1459d1282c01f6aa4",
         "affectsGlobalScope": false
       },
@@ -622,8 +622,8 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.service.ts": {
-        "version": "aad5c3979f873865e138ce371c5f71cec6fc46624f9db3ba6de28e97c2b73084",
-        "signature": "8558514b8f23adb264d9db48a4811de4d665fad763b9f68f367433c75d2e1203",
+        "version": "d5651061c2f8eda98c6b3c3b2e4cd204329266e012c4853fcf196478a6260f75",
+        "signature": "8ca9061129055a1c375a62cab202609060f6e1a4c01f1c28b770b756cc530cd0",
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
@@ -637,8 +637,8 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.middleware.ts": {
-        "version": "ce84d3c2c3b5e583ea48727c220ebf280b8d7a7c99e2ade7a94cb9a8bf2577c9",
-        "signature": "285dc7d23d75da4f3065e6f6b120393c0e1489a597508c6dd976daf5793a6d6b",
+        "version": "b0c1268c7c733b0e7bda7bb0eab59c48145aa0d24488e62fcb4ed264f20a6fbe",
+        "signature": "e7953309bf19f1fa085135d52a253572c57bca39e334f3c4950be957e0090a72",
         "affectsGlobalScope": false
       },
       "../src/user/user.router.ts": {
@@ -1270,7 +1270,8 @@
       ],
       "../src/user/user.middleware.ts": [
         "../node_modules/@types/bcrypt/index.d.ts",
-        "../node_modules/@types/express/index.d.ts"
+        "../node_modules/@types/express/index.d.ts",
+        "../src/user/user.service.ts"
       ],
       "../src/user/user.router.ts": [
         "../node_modules/@types/express/index.d.ts",
