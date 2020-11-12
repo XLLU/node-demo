@@ -12,12 +12,25 @@ export const createUser = async (user: UserModel) => {
   return data;
 };
 
-export const getUserByName = async (name: string) => {
+interface GetUserOptions {
+  needPassword?: boolean;
+}
+
+export const getUserByName = async (
+  name: string,
+  options: GetUserOptions = {},
+) => {
+  const { needPassword } = options;
+
   const statement = `
-    SELECT * FROM user
+    SELECT id, name 
+    ${needPassword ? ', password'  : ''}
+    FROM user
     WHERE name = ?
   `;
 
   const [data] = await connection.promise().query(statement, name);
-  return data;
+  console.log('data', data);
+  return data[0];
+
 };

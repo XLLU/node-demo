@@ -29,7 +29,15 @@ export const defaultErrorHandler = (
       break;
     case 'USER_NAME_EXISTS':
       statusCode = 409;
-      message = '用户已经存在了~';
+      message = '用户已经存在了';
+      break;
+    case 'USER_DOES_NOT_EXISTS':
+      statusCode = 400;
+      message = '当前登录用户不存在';
+      break;
+    case 'PASSWORD_NOT_CORRECT':
+      statusCode = 400;
+      message = '密码不对';
       break;
     default:
       statusCode = 500;

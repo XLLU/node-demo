@@ -607,7 +607,7 @@
         "affectsGlobalScope": false
       },
       "../src/app/app.middleware.ts": {
-        "version": "86b563f19c812b7c8babe6e9d6dea9379c2bc2a46da3fe86daf02b4a8df30e5a",
+        "version": "6716456614518a59523de6ed6f914dc14b881b9d341136e064d4d8d9e6e3e213",
         "signature": "a79617d9c972f1c6cce9cf37695343c1becf57ee2339c3f1459d1282c01f6aa4",
         "affectsGlobalScope": false
       },
@@ -622,8 +622,8 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.service.ts": {
-        "version": "d5651061c2f8eda98c6b3c3b2e4cd204329266e012c4853fcf196478a6260f75",
-        "signature": "8ca9061129055a1c375a62cab202609060f6e1a4c01f1c28b770b756cc530cd0",
+        "version": "fb2349ef51d3d8720709445c63ae4c512112cb8d916520849f76c4b00e7ef026",
+        "signature": "629cffe6c6349acb248f65f372b88d090268990c3059e20633826d45d0affbae",
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
@@ -646,14 +646,34 @@
         "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
         "affectsGlobalScope": false
       },
+      "../src/auth/auth.controller.ts": {
+        "version": "9d967a7a73feb51bdf28ff51936dc8cf48e7685a04a040929bd354ad9e4b294c",
+        "signature": "df8fe0947a327a53e33c4c4b774d09aad141541b3c0638bd42607b6c74aa4765",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/auth.middleware.ts": {
+        "version": "bf22fef55da8442cfaf790b65b3d195c315344a2dddd4d3914b677fb75448c0c",
+        "signature": "965979b568547b250e2ae514eea4c75d222205dccaa5dc889b4104e29eed1582",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/auth.router.ts": {
+        "version": "5baae7213f189bb0b25413db6b1fbe1344f4ca417f10c575a2e934f6c2a77404",
+        "signature": "c106970ee4b686b5ebf0964ea4e0d1b2af02bdecd2d5cfeecedeb7bb5b2f404b",
+        "affectsGlobalScope": false
+      },
       "../src/app/index.ts": {
-        "version": "308514b67a36f3b36d73be0a3e7710377d01e9312ea00b3f6fe7a3827c76c2d0",
+        "version": "a2398b7324cf02b8a14d19621e25e5c129dc065080f76c3a88f07dc5db559909",
         "signature": "4654f92731de7c18eb496ebf4134d15c881a25c2d6579affd293cde1951e4ced",
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
         "version": "cad78dca382a6d71e9b51496bdc6f9d2fc076281b850dc934325bfefb4abca99",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/auth.service.ts": {
+        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/mysql/lib/protocol/sequences/sequence.d.ts": {
@@ -1241,8 +1261,22 @@
       "../src/app/index.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../src/app/app.middleware.ts",
+        "../src/auth/auth.router.ts",
         "../src/post/post.router.ts",
         "../src/user/user.router.ts"
+      ],
+      "../src/auth/auth.controller.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/auth/auth.middleware.ts": [
+        "../node_modules/@types/bcrypt/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
+        "../src/user/user.service.ts"
+      ],
+      "../src/auth/auth.router.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../src/auth/auth.controller.ts",
+        "../src/auth/auth.middleware.ts"
       ],
       "../src/main.ts": [
         "../src/app/app.config.ts",
@@ -1772,6 +1806,15 @@
       "../src/app/index.ts": [
         "../node_modules/@types/express-serve-static-core/index.d.ts"
       ],
+      "../src/auth/auth.controller.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/auth/auth.middleware.ts": [
+        "../node_modules/@types/express/index.d.ts"
+      ],
+      "../src/auth/auth.router.ts": [
+        "../node_modules/@types/express-serve-static-core/index.d.ts"
+      ],
       "../src/post/post.controller.ts": [
         "../node_modules/@types/express/index.d.ts"
       ],
@@ -1937,6 +1980,10 @@
       "../src/app/app.middleware.ts",
       "../src/app/database/mysql.ts",
       "../src/app/index.ts",
+      "../src/auth/auth.controller.ts",
+      "../src/auth/auth.middleware.ts",
+      "../src/auth/auth.router.ts",
+      "../src/auth/auth.service.ts",
       "../src/main.ts",
       "../src/post/post.controller.ts",
       "../src/post/post.model.ts",
