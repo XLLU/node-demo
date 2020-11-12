@@ -1,10 +1,60 @@
 import { Request, Response, NextFunction } from 'express';
-import { getPosts } from './post.service';
+import * as postService from './post.service';
+import _ from 'lodash';
 
-export const index = (req: Request, res: Response, next: NextFunction) => {
-  if (req.headers.authorization != 'SECRET') {
-    return next(new Error());
+export const index = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const posts = await postService.getPosts();
+    res.send(posts);
+  } catch (error) {
+    next(error);
   }
-  const posts = getPosts();
-  res.send(posts);
+};
+
+export const create = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { title, content } = req.body;
+    console.log(title, content);
+    const data = await postService.createPost({ title, content });
+    res.status(201).send(data);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const update = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { postId } = req.params;
+    const post = _.pick(req.body, ['title', 'content']);
+    const data = await postService.updatePost(parseInt(postId, 10), post);
+    res.status(201).send(data);
+  } catch (error) {
+    next(error);
+  }
+}; 
+
+export const destroy = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { postId } = req.params;
+    const data = await postService.deletePost(parseInt(postId, 10));
+    res.status(201).send(data);
+  } catch (error) {
+    next(error);
+  }
 };

@@ -27,5 +27,8 @@ const postController = __importStar(require("./post.controller"));
 const app_middleware_1 = require("../app.middleware");
 const router = express_1.default.Router();
 router.get('/posts', app_middleware_1.requestUrl, postController.index);
+router.post('/createPost', app_middleware_1.requestUrl, postController.create);
+router.post('/post/:postId', app_middleware_1.requestUrl, postController.update);
+router.delete('/post/:postId', app_middleware_1.requestUrl, postController.destroy);
 exports.default = router;
 //# sourceMappingURL=post.router.js.map
