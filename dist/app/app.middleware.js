@@ -12,6 +12,14 @@ exports.defaultErrorHandler = (error, req, res, next) => {
     }
     let statusCode, message;
     switch (error.message) {
+        case 'NAME_IS_REQUIRED':
+            statusCode = 400;
+            message = '用户名必填哦';
+            break;
+        case 'PASSWORD_IS_REQUIRED':
+            statusCode = 400;
+            message = '密码必填哦';
+            break;
         default:
             statusCode = 500;
             message = 'Something wrong with the server... ';
