@@ -1,4 +1,4 @@
-import { connection } from '../database/mysql';
+import { connection } from '../app/database/mysql';
 import { PostModel } from './post.model';
 
 export const getPosts = async () => {

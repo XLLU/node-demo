@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './post/post.router';
+import router from '../post/post.router';
 import { defaultErrorHandler } from './app.middleware';
 
 const app = express();

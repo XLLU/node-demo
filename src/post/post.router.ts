@@ -1,6 +1,6 @@
 import express from 'express';
 import * as postController from './post.controller';
-import { requestUrl } from '../app.middleware';
+import { requestUrl } from '../app/app.middleware';
 import { runInContext } from 'vm';
 
 const router = express.Router();
