@@ -7,6 +7,7 @@ export const index = async (
   res: Response,
   next: NextFunction,
 ) => {
+  console.log('Posts API: ', req.user);
   try {
     const posts = await postService.getPosts();
     res.send(posts);

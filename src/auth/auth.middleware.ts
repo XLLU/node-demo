@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcrypt';
 import { getUserByName } from '../user/user.service';
+import { request } from 'http';
+import jwt from 'jsonwebtoken';
+import { PUBLIC_KEY } from '../app/app.config';
+import { TokenPayload } from './auth.interface';
 
 export const validateLoginData = async (
   req: Request,
@@ -29,4 +33,25 @@ export const validateLoginData = async (
   }
 
   next();
+};
+
+export const authGuard = (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      throw new Error();
+    }
+    const token = authorization.replace('Bearer ', '');
+    if (!token) {
+      throw new Error();
+    }
+
+    const decoded = jwt.verify(token, PUBLIC_KEY, { algorithms: ['RS256'] });
+
+    req.user = decoded as TokenPayload;
+
+    next();
+  } catch (error) {
+    next(new Error('UNAUTHORIZED'));
+  }
 };

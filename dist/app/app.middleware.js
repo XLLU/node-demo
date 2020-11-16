@@ -4,6 +4,7 @@ exports.defaultErrorHandler = exports.requestUrl = void 0;
 exports.requestUrl = (req, res, next) => {
     console.log('Request URL: ', req.url);
     console.log('Request Body: ', req.body);
+    console.log('Request Headers: ', req.headers);
     next();
 };
 exports.defaultErrorHandler = (error, req, res, next) => {
@@ -31,6 +32,10 @@ exports.defaultErrorHandler = (error, req, res, next) => {
         case 'PASSWORD_NOT_CORRECT':
             statusCode = 400;
             message = '密码不对';
+            break;
+        case 'UNAUTHORIZED':
+            statusCode = 401;
+            message = '请先登录';
             break;
         default:
             statusCode = 500;

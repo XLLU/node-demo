@@ -1,7 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
+import { signToken } from './auth.service';
 
 export const login = (req: Request, res: Response, next: NextFunction) => {
-  const { name, passowrd } = req.body;
+  const {
+    user: { id, name },
+  } = req.body;
 
-  res.status(200).send({ message: `Welcome back, ${name}` });
+  const payload = { id, name };
+  try {
+    const token = signToken({ payload });
+    res.send({ id, name, token });
+  } catch (error) {
+    next(error);
+  }
 };

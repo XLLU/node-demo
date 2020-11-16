@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 export const requestUrl = (req: Request, res: Response, next: NextFunction) => {
   console.log('Request URL: ', req.url);
   console.log('Request Body: ', req.body);
+  console.log('Request Headers: ', req.headers);
   next();
 };
 
@@ -38,6 +39,10 @@ export const defaultErrorHandler = (
     case 'PASSWORD_NOT_CORRECT':
       statusCode = 400;
       message = '密码不对';
+      break;
+    case 'UNAUTHORIZED':
+      statusCode = 401;
+      message = '请先登录';
       break;
     default:
       statusCode = 500;
