@@ -1,0 +1,39 @@
+{
+	"Import Request&Response&NextFunction": {
+		"prefix": "irrn",
+		"body": [
+			"import { Request, Response, NextFunction } from 'express';"
+		],
+		"description": "Import Request&Response&NextFunction"
+	},
+	"Express Handler / Middleware": {
+		"prefix": "eh",
+		"body": [
+			"/**",
+			" * $1 ",
+			" */",
+			"export const ${2: Name} = async (",
+			"    req: Request,",
+			"    res: Response,",
+			"    next: NextFunction,",
+			"  ) => {",
+			"    $3",
+			"};"
+		],
+		"description": "To create a new express handler with default paras"
+	},
+	"Async Function": {
+		"prefix": "asf",
+		"body": [
+			"/**",
+			" * $1 ",
+			" */",
+			"export const ${2: Name} = async (",
+			"    $3",
+			"  ) => {",
+			"    $4",
+			"};"
+		],
+		"description": "To create a new express handler with default paras"
+	}
+}

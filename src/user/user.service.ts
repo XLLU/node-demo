@@ -24,13 +24,12 @@ export const getUserByName = async (
 
   const statement = `
     SELECT id, name 
-    ${needPassword ? ', password'  : ''}
+    ${needPassword ? ', password' : ''}
     FROM user
     WHERE name = ?
   `;
 
   const [data] = await connection.promise().query(statement, name);
-  console.log('data', data);
+  // console.log('data', data);
   return data[0];
-
 };

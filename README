@@ -6,3 +6,24 @@ Node Project Demo
 
 > rsa -in private.key -pubout -out public
 ```
+
+## File table 
+```
+CREATE TABLE file (  
+  id int NOT NULL primary key AUTO_INCREMENT comment 'primary key',
+  originalName VARCHAR(255) NOT NULL,
+  size INT(11) NOT NULL,
+  mimeType VARCHAR(255) NOT NULL,
+  fileName VARCHAR(255) NOT NULL,
+  postId INT(11) NOT NULL,
+  userId INT(11) NOT NULL,
+
+  FOREIGN KEY (`postId`) REFERENCES `post`(`id`)
+  ON DELETE NO ACTION ON UPDATE NO ACTION, 
+
+  FOREIGN KEY (`userId`) REFERENCES `user`(`id`)
+  ON DELETE NO ACTION ON UPDATE NO ACTION
+
+) default charset=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+```

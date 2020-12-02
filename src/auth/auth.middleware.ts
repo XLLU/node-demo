@@ -31,6 +31,8 @@ export const validateLoginData = async (
   if (!matched) {
     return next(new Error('PASSWORD_NOT_CORRECT'));
   }
+  
+  req.body.id = user.id;
 
   next();
 };
