@@ -44,6 +44,10 @@ export const defaultErrorHandler = (
       statusCode = 401;
       message = '请先登录';
       break;
+    case 'FILE_NOT_FOUND':
+      statusCode = 404;
+      message = '文件不存在';
+      break;
     default:
       statusCode = 500;
       message = 'Something wrong with the server... ';

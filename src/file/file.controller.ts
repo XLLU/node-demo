@@ -1,4 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
+import fs from 'fs';
+import path from 'path';
 import { createFile } from './file.service';
 import { findFileById } from './file.service';
 import _ from 'lodash';
@@ -32,6 +34,7 @@ export const store = async (
       ...fileInfo,
       userId,
       postId,
+      ...req.fileMetadata,
     });
     res.status(201).send(data);
   } catch (error) {
@@ -51,9 +54,31 @@ export const serveFile = async (
 
   try {
     const file = await findFileById(parseInt(fileId, 10));
-    console.log('filename: ', file.filename);
-    res.sendFile(file.filename as string, {
-      root: 'uploads',
+    
+    const { size } = req.query;
+    let filename = file.filename;
+    let root = 'uploads';
+    let resizedFolder = 'resize';
+
+    if (size) {
+      const imageSizes = ['large', 'medium', 'thumbnail'];
+
+      if (!imageSizes.some((item) => item == size)) {
+        throw new Error('FILE_NOT_FOUND');
+      }
+
+      const fileExist = fs.existsSync(
+        path.join(root, resizedFolder, `${filename}-${size}`),
+      );
+
+      if (fileExist) {
+        filename = `${filename}-${size}`;
+        root = path.join(root, resizedFolder);
+      }
+    }
+
+    res.sendFile(filename, {
+      root,
       headers: {
         'Content-Type': file.mimetype,
       },
@@ -61,4 +86,27 @@ export const serveFile = async (
   } catch (error) {
     next(error);
   }
+};
+
+/**
+ * Get File Metadata 
+ */
+export const getFileMetadata = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+  const { fileId } = req.params;
+
+  try {
+    const file = await findFileById(parseInt(fileId, 10));
+    
+    const data = _.pick(file, ['id', 'size', 'width', 'height', 'metadata']);
+
+    res.send(data);
+
+  } catch (error) {
+    next(error);
+  }
+
 };
