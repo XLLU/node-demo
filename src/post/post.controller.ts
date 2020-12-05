@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import * as postService from './post.service';
 import _ from 'lodash';
+import { TagModel } from '../tag/tag.model';
+import { findTagByName, createTag } from '../tag/tag.service';
 
 export const index = async (
   req: Request,
@@ -55,6 +57,93 @@ export const destroy = async (
     const { postId } = req.params;
     const data = await postService.deletePost(parseInt(postId, 10));
     res.status(201).send(data);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+/**
+ * Create new PostTag 
+ */
+export const newPostTag = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+  const { postId } = req.params;
+  const { name } = req.body;
+
+  let tag: TagModel;
+
+  try {
+    tag = await findTagByName(name);
+  } catch (error) {
+    next(error);
+  }
+
+  console.log('Tag: ', tag);
+  // If the tag master data does not exist, create it first
+  if (!tag) {
+    try {
+      const data = await createTag({ name });
+      tag = { id: data.insertId };
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+
+  // If the post has already got the tag
+  if (tag) {
+    try {
+      const postHasTag = await postService.postHasTag(parseInt(postId, 10), tag.id);
+      console.log('postHasTag', postHasTag);
+      if (postHasTag) {
+        throw new Error('POST_ALREADY_HAS_THE_TAG');
+      }
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  try {
+    console.log('PostId: ', postId);
+    console.log('TagId: ', tag.id);
+
+    const data = postService.createPostTag(parseInt(postId, 10), tag.id);
+
+    res.sendStatus(201);
+  } catch (error) {
+    return next(error);
+  }
+
+};
+
+/**
+ * Delete a post tag 
+ */
+export const destroyPostTag = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+  const { postId } = req.params;
+  const { name } = req.body;
+
+  let tag: TagModel;
+  try {
+    tag = await findTagByName(name);
+
+    const postHasTag = await postService.postHasTag(parseInt(postId), tag.id);
+
+    if (!postHasTag) {
+      throw new Error('POST_HAS_NO_SUCH_TAG');
+    }
+    
+    const data = await postService.deletePostTag(parseInt(postId), tag.id);
+    res.sendStatus(200);
+
   } catch (error) {
     next(error);
   }

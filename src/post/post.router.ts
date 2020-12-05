@@ -14,4 +14,8 @@ router.post('/post/:postId', requestUrl, authGuard, postController.update);
 
 router.delete('/post/:postId', requestUrl, authGuard, postController.destroy);
 
+router.post('/post/:postId/tag', authGuard, postController.newPostTag);
+
+router.delete('/post/:postId/tag', authGuard, postController.destroyPostTag);
+
 export default router;

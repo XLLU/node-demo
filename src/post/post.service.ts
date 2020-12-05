@@ -49,3 +49,54 @@ export const deletePost = async (postId: number) => {
   const [data] = await connection.promise().query(statement, postId);
   return data;
 };
+
+/**
+ * Create New Post Tag 
+ */
+export const createPostTag = async (
+    postId: number, tagId: number
+  ) => {
+  const statement = `
+    INSERT INTO post_tag (postId, tagId)
+    VALUES (?,?)
+  `;
+  
+  console.log([postId, tagId]);
+
+  const [data] = await connection.promise().query(statement, [postId, tagId]);
+
+  return data; 
+};
+
+/**
+ * Check if post already got the tag 
+ */
+export const postHasTag = async (
+    postId: number, tagId: number
+  ) => {
+    
+  const statement = `
+    SELECT * FROM post_tag
+    WHERE postId=? AND tagId=?
+  `;
+
+  const [data] = await connection.promise().query(statement, [postId, tagId]);
+
+  return data[0]? true: false; 
+};
+
+/**
+ * Delete a post tag 
+ */
+export const deletePostTag = async (
+    postId: number, tagId: number
+  ) => {
+  const statement = `
+    DELETE FROM post_tag
+    WHERE postId = ? and tagId = ?
+  `;
+
+  const [data] = await connection.promise().query(statement, [postId, tagId]);
+
+  return data; 
+};

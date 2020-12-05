@@ -48,6 +48,18 @@ export const defaultErrorHandler = (
       statusCode = 404;
       message = '文件不存在';
       break;
+    case 'TAG_ALREADY_EXIST':
+      statusCode = 400;
+      message = '标签已经存在';
+      break;
+    case 'POST_ALREADY_HAS_THE_TAG':
+      statusCode = 400;
+      message = '文章已经被打上此标签';
+      break;
+    case 'POST_HAS_NO_SUCH_TAG':
+      statusCode = 400;
+      message = '文章无此标签';
+      break;
     default:
       statusCode = 500;
       message = 'Something wrong with the server... ';
