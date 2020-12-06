@@ -60,6 +60,10 @@ export const defaultErrorHandler = (
       statusCode = 400;
       message = '文章无此标签';
       break;
+    case 'CANNOT_COMMENT_ON_REPLY':
+      statusCode = 400;
+      message = '无法评论一个回复';
+      break;
     default:
       statusCode = 500;
       message = 'Something wrong with the server... ';
