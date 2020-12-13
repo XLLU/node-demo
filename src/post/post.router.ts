@@ -3,10 +3,11 @@ import * as postController from './post.controller';
 import { requestUrl } from '../app/app.middleware';
 import { runInContext } from 'vm';
 import { authGuard } from '../auth/auth.middleware';
+import { sort, filter } from './post.middleware';
 
 const router = express.Router();
 
-router.get('/posts', requestUrl, authGuard, postController.index);
+router.get('/posts', requestUrl, authGuard, sort, filter, postController.index);
 
 router.post('/createPost', requestUrl, authGuard, postController.create);
 

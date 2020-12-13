@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, request } from 'express';
 import * as postService from './post.service';
 import _ from 'lodash';
 import { TagModel } from '../tag/tag.model';
@@ -9,9 +9,12 @@ export const index = async (
   res: Response,
   next: NextFunction,
 ) => {
-  console.log('Posts API: ', req.user);
   try {
-    const posts = await postService.getPosts();
+    const posts = await postService.getPosts({
+      sort: req.sort,
+      filter: req.filter
+    });
+
     res.send(posts);
   } catch (error) {
     next(error);

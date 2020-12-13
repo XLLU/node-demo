@@ -1,20 +1,44 @@
 import { connection } from '../app/database/mysql';
 import { PostModel } from './post.model';
+import { sqlFragment } from './post.provider';
 
-export const getPosts = async () => {
+export interface getPostsOptionsFilter {
+  name?: string;
+  sql?: string;
+  param?: string;
+}
+
+interface getPostsOptions {
+  sort?: string;
+  filter?: getPostsOptionsFilter;
+}
+
+export const getPosts = async (sortOptions: getPostsOptions) => {
+  const { sort, filter } = sortOptions;
+
+  let params: Array<any> = [];
+
+  if (filter.param) {
+    params = [filter.param, ...params];
+  }
+
   const statement = `
     SELECT 
     post.id, post.title, post.content,
-    JSON_OBJECT(
-      'id', user.id,
-      'name', user.name
-    ) as user
+    ${sqlFragment.user},
+    ${sqlFragment.totalComments},
+    ${sqlFragment.files},
+    ${sqlFragment.tags}
     FROM post
-    LEFT JOIN user 
-      ON post.userid = user.id
+    ${sqlFragment.leftJoinUser}
+    ${sqlFragment.leftJoinOneFile}
+    ${sqlFragment.leftJoinTag}
+    WHERE ${filter.sql}
+    GROUP BY post.id
+    ORDER BY ${sort}
   `;
 
-  const [data] = await connection.promise().query(statement);
+  const [data] = await connection.promise().query(statement, params);
 
   return data;
 };

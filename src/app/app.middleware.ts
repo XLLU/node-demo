@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 
 export const requestUrl = (req: Request, res: Response, next: NextFunction) => {
-  console.log('Request URL: ', req.url);
-  console.log('Request Body: ', req.body);
-  console.log('Request Headers: ', req.headers);
+  // console.log('Request URL: ', req.url);
+  // console.log('Request Body: ', req.body);
+  // console.log('Request Headers: ', req.headers);
   next();
 };
 
