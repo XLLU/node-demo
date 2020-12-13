@@ -136,3 +136,30 @@ export const deletePostTag = async (
 
   return data; 
 };
+
+/**
+ * Get Post Total Count 
+ */
+export const getPostsTotalCount = async (
+    options: getPostsOptions
+  ) => {
+    const { filter } = options;
+    let params: Array<any> = [];
+
+    if (filter.param) {
+      params = [filter.param, ...params];
+    }
+
+    const statement = `
+      SELECT COUNT(DISTINCT post.id) as totalCount
+      FROM post
+      ${sqlFragment.leftJoinUser}
+      ${sqlFragment.leftJoinOneFile}
+      ${sqlFragment.leftJoinTag}
+      WHERE ${filter.sql}
+    `;
+
+    const [data] = await connection.promise().query(statement, params);
+
+    return data[0].totalCount;
+};

@@ -10,6 +10,16 @@ export const index = async (
   next: NextFunction,
 ) => {
   try {
+    const totalCount = await postService.getPostsTotalCount({
+      filter: req.filter,
+    });
+
+    res.header('X-Total-Count', totalCount);
+  } catch (error) {
+    next(error);
+  }
+
+  try {
     const posts = await postService.getPosts({
       sort: req.sort,
       filter: req.filter,
