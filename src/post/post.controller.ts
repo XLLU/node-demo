@@ -12,7 +12,8 @@ export const index = async (
   try {
     const posts = await postService.getPosts({
       sort: req.sort,
-      filter: req.filter
+      filter: req.filter,
+      pagination: req.pagination,
     });
 
     res.send(posts);

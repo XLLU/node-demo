@@ -1,4 +1,7 @@
-import { getPostsOptionsFilter } from '../src/post/post.service';
+import {
+  getPostsOptionsFilter,
+  getPostsOptionsPagination,
+} from '../src/post/post.service';
 import { TokenPayload } from '../src/auth/auth.interface';
 
 declare global {
@@ -8,6 +11,7 @@ declare global {
       fileMetadata: { width?: number; height?: number; metadata?: {} };
       sort: string;
       filter: getPostsOptionsFilter;
+      pagination: getPostsOptionsPagination;
     }
   }
 }

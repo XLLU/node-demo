@@ -2,6 +2,11 @@ import { connection } from '../app/database/mysql';
 import { PostModel } from './post.model';
 import { sqlFragment } from './post.provider';
 
+export interface getPostsOptionsPagination {
+  limit?: number;
+  offset?: number;
+}
+
 export interface getPostsOptionsFilter {
   name?: string;
   sql?: string;
@@ -11,12 +16,17 @@ export interface getPostsOptionsFilter {
 interface getPostsOptions {
   sort?: string;
   filter?: getPostsOptionsFilter;
+  pagination?: getPostsOptionsPagination;
 }
 
 export const getPosts = async (sortOptions: getPostsOptions) => {
-  const { sort, filter } = sortOptions;
+  const {
+    sort,
+    filter,
+    pagination: { limit, offset },
+  } = sortOptions;
 
-  let params: Array<any> = [];
+  let params: Array<any> = [limit, offset];
 
   if (filter.param) {
     params = [filter.param, ...params];
@@ -36,6 +46,8 @@ export const getPosts = async (sortOptions: getPostsOptions) => {
     WHERE ${filter.sql}
     GROUP BY post.id
     ORDER BY ${sort}
+    LIMIT ?
+    OFFSET ?
   `;
 
   const [data] = await connection.promise().query(statement, params);

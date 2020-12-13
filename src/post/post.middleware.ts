@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction, request } from 'express';
+import { POSTS_PER_PAGE } from '../app/app.config'; 
 
 /**
  * Process sort logic
@@ -56,4 +57,23 @@ export const filter = async (
   }
 
   next();
+};
+
+/**
+ * Pagination 
+ */
+export const paginate = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    const { page = 1 } = req.query;
+
+    const limit = parseInt(POSTS_PER_PAGE, 10) || 10; 
+    
+    const offset = limit * (parseInt(page as string, 10) -1)
+
+    req.pagination = {limit, offset};
+
+    next();
 };
